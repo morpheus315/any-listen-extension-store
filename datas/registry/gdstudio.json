@@ -3,8 +3,8 @@
   "name": "GD音乐台",
   "description": "使用GDStudio插件接口实现的音乐插件，支持网易云音乐、QQ音乐、酷我音乐、JOOX、TIDAL、QOBUZ、哔哩哔哩、Apple Music、YouTube Music、Spotify等多个平台的音乐搜索、播放和歌词显示功能。",
   "icon": "https://raw.githubusercontent.com/any-listen/any-listen-extension-store/main/extensions/gdstudio/icon.png",
-  "version": "0.3.2",
-  "target_engine": "1.1.2",
+  "version": "0.4.1",
+  "target_engine": "1.3.1",
   "author": "e^iπ=-1",
   "homepage": "https://github.com/Morpheus799/gdstudio-repo#readme",
   "license": "Apache-2.0",
@@ -18,7 +18,7 @@
   "contributes": {
     "resource": [
       {
-        "id": "netease",
+        "id": "gd-netease",
         "name": "gd-网易云音乐",
         "resource": [
           "musicSearch",
@@ -28,7 +28,7 @@
         ]
       },
       {
-        "id": "kuwo",
+        "id": "gd-kuwo",
         "name": "gd-酷我音乐",
         "resource": [
           "musicSearch",
@@ -38,7 +38,7 @@
         ]
       },
       {
-        "id": "joox",
+        "id": "gd-joox",
         "name": "gd-JOOX",
         "resource": [
           "musicSearch",
@@ -48,7 +48,7 @@
         ]
       },
       {
-        "id": "tencent",
+        "id": "gd-tencent",
         "name": "gd-QQ音乐",
         "resource": [
           "musicSearch",
@@ -58,7 +58,7 @@
         ]
       },
       {
-        "id": "tidal",
+        "id": "gd-tidal",
         "name": "gd-TIDAL",
         "resource": [
           "musicSearch",
@@ -68,7 +68,7 @@
         ]
       },
       {
-        "id": "qobuz",
+        "id": "gd-qobuz",
         "name": "gd-QOBUZ",
         "resource": [
           "musicSearch",
@@ -78,7 +78,7 @@
         ]
       },
       {
-        "id": "bilibili",
+        "id": "gd-bilibili",
         "name": "gd-哔哩哔哩",
         "resource": [
           "musicSearch",
@@ -88,7 +88,7 @@
         ]
       },
       {
-        "id": "apple",
+        "id": "gd-apple",
         "name": "gd-Apple Music",
         "resource": [
           "musicSearch",
@@ -98,7 +98,7 @@
         ]
       },
       {
-        "id": "ytmusic",
+        "id": "gd-ytmusic",
         "name": "gd-YouTube Music",
         "resource": [
           "musicSearch",
@@ -108,13 +108,83 @@
         ]
       },
       {
-        "id": "spotify",
+        "id": "gd-spotify",
         "name": "gd-Spotify",
         "resource": [
           "musicSearch",
           "musicUrl",
           "musicPic",
           "musicLyric"
+        ]
+      },
+      {
+        "id": "netease",
+        "name": "GD音乐台旧数据迁移",
+        "resource": [
+          "musicUrl"
+        ]
+      },
+      {
+        "id": "kuwo",
+        "name": "GD音乐台旧数据迁移",
+        "resource": [
+          "musicUrl"
+        ]
+      },
+      {
+        "id": "joox",
+        "name": "GD音乐台旧数据迁移",
+        "resource": [
+          "musicUrl"
+        ]
+      },
+      {
+        "id": "tencent",
+        "name": "GD音乐台旧数据迁移",
+        "resource": [
+          "musicUrl"
+        ]
+      },
+      {
+        "id": "tidal",
+        "name": "GD音乐台旧数据迁移",
+        "resource": [
+          "musicUrl"
+        ]
+      },
+      {
+        "id": "qobuz",
+        "name": "GD音乐台旧数据迁移",
+        "resource": [
+          "musicUrl"
+        ]
+      },
+      {
+        "id": "bilibili",
+        "name": "GD音乐台旧数据迁移",
+        "resource": [
+          "musicUrl"
+        ]
+      },
+      {
+        "id": "apple",
+        "name": "GD音乐台旧数据迁移",
+        "resource": [
+          "musicUrl"
+        ]
+      },
+      {
+        "id": "ytmusic",
+        "name": "GD音乐台旧数据迁移",
+        "resource": [
+          "musicUrl"
+        ]
+      },
+      {
+        "id": "spotify",
+        "name": "GD音乐台旧数据迁移",
+        "resource": [
+          "musicUrl"
         ]
       }
     ],
@@ -142,12 +212,26 @@
         "textarea": false,
         "default": ""
       }
+    ],
+    "commands": [
+      {
+        "command": "migrateLegacyData",
+        "name": "迁移旧版歌单数据",
+        "description": "将 Any Listen 备份中的旧版 GD音乐台歌曲转换为新版标识。",
+        "hidden": false
+      },
+      {
+        "command": "showMigrationReport",
+        "name": "查看迁移报告",
+        "description": "查看最近一次歌单迁移的结果。",
+        "hidden": false
+      }
     ]
   },
   "main": "main.js",
   "publicKey": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxLxQDOf77NMZtB0ZwD3/pFjLjB0zdk4cmDCyDOXNkmF5hpW/KidYjLZdCtCRYWdJ+NEQ+AdEE+JB6uWxOZmN/6Wbb7cvAZuDL5eYt2TeFVjr5GPtTvHgYplM5+tPDlx/6RbSWgzZliT7IOxIQnTzvb7j8zGvb6cQ3cuQe3weRSzIU3O3Sh+2BJEinL3zNHcDstCa4J6Uy7+81ZYVUyQux7iygN9Baka4Ty2rPb06MF+bxqThoG8m0qHdrVn5UENGOXSuagi2/fNNSmGtiWAaSlz4rX/wO8ztESEW0QWnPyD9Ys1NKYp8roYbEKjVnvYhXW9fDNszkvKq9PsZ2MdUXwIDAQAB",
-  "download_url": "https://github.com/Morpheus799/gdstudio-repo/releases/download/v0.3.2/gdstudio_v0.3.2.alix",
-  "sha256": "6bccf540611c07f37d60c9c22093a7d8bd1bcaca6581c27feab7f61bc71b4e88",
+  "download_url": "https://github.com/morpheus315/gdstudio-repo/releases/download/v0.4.1/gdstudio_v0.4.1.alix",
+  "sha256": "e6f8dc53a204c3ad49178843d11205df8e57559d53017d68d0fc40f2e4c28174",
   "create_timestamp": 1779157505854,
-  "update_timestamp": 1788317082372
+  "update_timestamp": 1788513570704
 }
